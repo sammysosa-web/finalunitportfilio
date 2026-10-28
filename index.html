@@ -1,205 +1,348 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Update these (from Curator Guide) -->
-  <meta name="description" content="Junior Fall Portfolio for Samantha payero " />
-  <meta name="keywords" content="portfolio, junior, projects, programming, web development" />
-  <meta name="author" content="Samantha Payero " />
-
-  <title> Samantha  Payero | Junior Fall Portfolio</title>
-
-  <!-- Main stylesheet -->
-  <link rel="stylesheet" href="style.css" />
-
-  <!-- Optional favicon (put your icon file in the same folder) -->
-  <link rel="icon" type="image/x-icon" href="Avatar.png" />
-
-  <!-- Optional fonts (only keep if your CSS uses them) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Samantha Payero's creative technology, programming, and game design portfolio.">
+<title>Samantha Payero | Creative Portfolio</title>
+<style>
+:root {
+  --bg:#0b0b12; --card:#151520; --pink:#ff67ce;
+  --purple:#a78bfa; --green:#67f5bc; --text:#f7f4ff;
+  --muted:#b7b2c8; --line:#302b40;
+}
+* {box-sizing:border-box;scroll-behavior:smooth}
+body {
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;line-height:1.65;
+}
+a {color:inherit}
+.wrap {width:min(1100px,90%);margin:auto}
+header {
+  position:sticky;top:0;z-index:10;background:#0b0b12ee;
+  backdrop-filter:blur(14px);border-bottom:1px solid var(--line);
+}
+nav {display:flex;justify-content:space-between;align-items:center;
+  gap:20px;padding:17px 0;flex-wrap:wrap}
+.brand {font-weight:800;text-decoration:none;font-size:19px}
+.brand span {color:var(--pink)}
+.links {display:flex;gap:20px;flex-wrap:wrap}
+.links a {font-size:14px;text-decoration:none;color:var(--muted)}
+.links a:hover {color:var(--pink)}
+.hero {padding:85px 0 65px;display:grid;
+  grid-template-columns:1.2fr .8fr;gap:35px;align-items:center}
+.eyebrow {color:var(--green);font-size:12px;letter-spacing:2px;font-weight:bold}
+h1 {font-size:clamp(42px,6vw,70px);line-height:1.08;margin:18px 0}
+.gradient {background:linear-gradient(90deg,var(--pink),var(--purple));
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.lede {font-size:17px;color:var(--muted);max-width:600px}
+.actions {display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
+.btn {display:inline-block;padding:12px 18px;border-radius:10px;
+  border:1px solid var(--line);text-decoration:none;font-weight:bold;
+  cursor:pointer;font-size:14px;transition:.2s}
+.btn:hover {transform:translateY(-2px);border-color:var(--pink)}
+.primary {background:var(--pink);color:#180d19;border-color:var(--pink)}
+.art {border:1px solid #54406a;border-radius:20px;padding:22px;
+  background:radial-gradient(ellipse at top right,#382047,#171421 60%);
+  min-height:300px;display:flex;flex-direction:column;justify-content:space-between}
+.art-top {font-family:monospace;color:var(--green);font-size:12px}
+.pixel {font-size:76px;text-align:center;line-height:1.4}
+.art h2 {font-family:monospace;color:var(--pink);text-align:center}
+.art p {text-align:center;color:var(--muted);font-size:13px}
+section.content {padding:45px 0}
+.section-heading {margin-bottom:25px}
+.section-heading h2 {font-size:32px;margin-bottom:5px}
+.section-heading p {color:var(--muted);margin-top:0}
+.about-grid,.skills-grid {display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.panel,.project {background:var(--card);border:1px solid var(--line);
+  border-radius:16px;padding:23px}
+.panel h3,.project h3 {margin-top:0}
+.muted {color:var(--muted)}
+.filters {display:flex;gap:9px;flex-wrap:wrap;margin:22px 0}
+.filter {background:var(--card);color:var(--text)}
+.filter.active {background:var(--pink);color:#180d19;border-color:var(--pink)}
+.grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}
+.project {display:flex;flex-direction:column;align-items:flex-start}
+.project h3 {margin:10px 0 4px;font-size:21px}
+.project p {color:var(--muted);font-size:14px}
+.tag {display:inline-block;background:#292238;color:#e6c9ff;
+  border-radius:30px;padding:4px 10px;font-size:11px;margin:3px 4px 3px 0}
+.project .actions {margin-top:auto;padding-top:12px}
+.project .btn {margin-top:3px}
+.project[hidden] {display:none}
+.skills {display:flex;gap:9px;flex-wrap:wrap}
+.skills span {padding:9px 13px;border:1px solid var(--line);
+  border-radius:9px;background:var(--card);font-size:13px}
+footer {border-top:1px solid var(--line);padding:30px 0;
+  color:var(--muted);font-size:13px}
+footer .wrap {display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+footer a {color:var(--pink)}
+@media(max-width:720px) {
+  .hero {grid-template-columns:1fr;padding-top:48px}
+  .grid,.about-grid,.skills-grid {grid-template-columns:1fr}
+  .links {gap:12px}
+  .links a {font-size:12px}
+  .section-heading h2 {font-size:27px}
+}
+</style>
 </head>
-
 <body>
 
-  <!-- NAVBAR -->
-  <header>
-    <nav class="navbar">
-      <div class="navbar-left">
-        <!-- Replace logo.png with your own image file -->
-        <img src="logo.jpeg" alt="Logo" />
+<header>
+  <nav class="wrap">
+    <a class="brand" href="#home">SP<span> ✦</span> Samantha Payero</a>
+    <div class="links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+<section class="hero wrap" id="home">
+  <div>
+    <p class="eyebrow">STUDENT · GAME DESIGN · CREATIVE TECHNOLOGY</p>
+    <h1>Turning ideas into <span class="gradient">digital experiences.</span></h1>
+    <p class="lede">Hi, I'm Samantha Payero, a student at Thomas Edison High School. I enjoy creating games, writing code, experimenting with digital design, and learning how technology can solve problems.</p>
+    <div class="actions">
+      <a class="btn primary" href="#projects">Explore My Work ↓</a>
+      <a class="btn" href="mailto:samanthap260@nycstudents.net">Contact Me ↗</a>
+    </div>
+  </div>
+  <div class="art">
+    <div class="art-top">CREATIVE MODE // PORTFOLIO 2026</div>
+    <div>
+      <div class="pixel">🎮 ✦ 💻</div>
+      <h2>IDEA → CODE → CREATE</h2>
+      <p>Curiosity first. Learn by building. Improve every version.</p>
+    </div>
+    <div class="art-top">STATUS: ALWAYS LEARNING</div>
+  </div>
+</section>
+
+<section class="content wrap" id="about">
+  <div class="section-heading">
+    <h2>About Me<span class="gradient">.</span></h2>
+    <p>A little about who I am and what I am learning.</p>
+  </div>
+  <div class="about-grid">
+    <div class="panel">
+      <h3>My Story</h3>
+      <p class="muted">I'm a student at Thomas Edison High School building my skills in programming, game development, and digital design. My projects help me turn classroom lessons into real experiences while developing creativity, patience, and problem-solving skills.</p>
+    </div>
+    <div class="panel">
+      <h3>My Goals</h3>
+      <p class="muted">I want to keep improving my technical skills, build useful and engaging digital experiences, and prepare for future college, internship, and career opportunities in technology.</p>
+    </div>
+  </div>
+</section>
+
+<section class="content wrap" id="projects">
+  <div class="section-heading">
+    <h2>Featured Projects<span class="gradient">.</span></h2>
+    <p>Explore my games, programming assignments, and creative coding projects.</p>
+  </div>
+  <div class="filters" aria-label="Filter projects">
+    <button class="btn filter active" data-filter="all">All Projects</button>
+    <button class="btn filter" data-filter="games">Game Design</button>
+    <button class="btn filter" data-filter="python">Python</button>
+    <button class="btn filter" data-filter="creative">Creative Coding</button>
+    <button class="btn filter" data-filter="portfolio">Portfolios</button>
+  </div>
+
+  <div class="grid" id="project-grid">
+
+    <article class="project" data-category="games">
+      <span class="tag">UNITY · GAME DESIGN</span>
+      <h3>Bamboo Forest Escape</h3>
+      <p>Explore a bamboo forest, avoid the panda, and collect all the gems to win. This game focuses on exploration, collecting objectives, and avoiding an in-game threat.</p>
+      <p><strong>Skills:</strong> Game mechanics, movement, objectives, level design.</p>
+      <div class="actions">
+        <a class="btn primary" href="https://play.unity.com/en/games/0e2aea42-2920-4a50-92fe-83a8546a4d56/webgl-builds" target="_blank" rel="noopener">Play Game ↗</a>
       </div>
+    </article>
 
-      <ul class="navbar-right">
-  <li><a href="#home">Home</a></li>
-  <li><a href="#projects">Projects</a></li>
-  <li><a href="#cfus">CFUs</a></li>
-  <li><a href="#labs">Labs</a></li>
-  <li><a href="#contacts">Contacts</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- MAIN CONTENT -->
-  <main id="home" class="home-card">
-    
-  </main>
-
-    <!-- ABOUT / BIO CARD -->
-    <section class="resource-card">
-      <div class="bio">
-        <div class="bio-pic">
-          <!-- Replace profile.jpg with your own image file -->
-          <img src="profile.jpeg" alt="Your Photo" />
-        </div>
-
-        <div class="bio-text">
-          <h1> Samantha Payero  </h1>
-          <h4>Student at Thomas Edsion </h4>
-          <p>
-          Internship / job readiness &
- Personal growth showcase
-
-Intended audience are Teachers
-Creating a portfolio  allows me  to showcase my ideas for all my project and processes throughout the months 
-          </p>
-        </div>
+    <article class="project" data-category="games">
+      <span class="tag">UNITY · WILDLIFE</span>
+      <h3>Spot the Raccoon</h3>
+      <p>Catch raccoons to prevent the forest from becoming overrun. The concept emphasizes treating animals with kindness instead of hurting them.</p>
+      <p><strong>Skills:</strong> Game design, interactive objectives, environmental awareness.</p>
+      <div class="actions">
+        <a class="btn primary" href="https://play.unity.com/en/games/873612c2-12f0-4be5-a92b-5befa369f406/spot-the-raccoonb" target="_blank" rel="noopener">Play Game ↗</a>
       </div>
-    </section>
+    </article>
 
-    <!-- QUICK LINKS CARD (optional) -->
-    <section class="resource-card">
-      <h2>Links</h2>
-      <ul>
-  <li><a href="https://py3.codeskulptor.org/#user310_HPzixx1p4N_1.py" target="_blank">Winter Scene Project</a></li>
-
-  <li><a href="https://drive.google.com/file/d/1m8aU733OVRk-DLZ1wgMKnHky9sD0WzfU/view" target="_blank">Google Drive File</a></li>
-
-  <li><a href="https://earsketch.gatech.edu/earsketch2/?sharing=5QALlUS_Jl7MMLt-MCJ_Fg" target="_blank">EarSketch Project</a></li>
-
-  <li><a href="https://py3.codeskulptor.org/#user310_8nuzVAXPKz_0.py" target="_blank">Calculator Project</a></li>
-      </ul>
-
-      <div class="skill-images">
-        <!-- Old portfolio -->
-        <a href="https://sammysosa-web.github.io/portfolio_sp/#game-design" target="_blank" rel="noopener">
-          <div class="picture">
-            <img class="link-pic" src="old_portfolio_icon.png" alt="Old Portfolio" />
-          </div>
-        </a>
-
-        <!-- Email -->
-        <a href="mailto:samanthap260@nycstudents.net" target="_blank" rel="noopener">
-          <div class="picture">
-            <img class="link-pic" src="email_icon.jpeg" alt="Email" />
-          </div>
-        </a>
-
-        <!-- LinkedIn (or other) -->
-        <a href="https://www.linkedin.com/in/samantha-payero-a2a967369?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" rel="noopener">
-          <div class="picture">
-            <img class="link-pic" src="LinkedIn_Pfp.png" alt="LinkedIn" />
-          </div>
-        </a>
+    <article class="project" data-category="games">
+      <span class="tag">UNITY · SURVIVAL</span>
+      <h3>Zombies in Space</h3>
+      <p>Move through space while dodging zombie attacks. Use W to move forward, S to move backward, A to move left, and D to move right.</p>
+      <p><strong>Skills:</strong> Player controls, survival mechanics, game testing.</p>
+      <div class="actions">
+        <a class="btn primary" href="https://play.unity.com/en/games/3249ebb3-0d80-4b22-af0a-2a7a9d98c1c5/webgl-builds-zombies-in-space" target="_blank" rel="noopener">Play Game ↗</a>
       </div>
-    </section>
+    </article>
 
-    <!-- PROJECTS SECTION (repeatable blocks) -->
-    <section class="resource-card">
-  <h2>Past portfolios</h2>
-  <p>These are my past portfolios which showcase my work from the past year.</p>
-  <iframe src="https://sammysosa-web.github.io/portfolio_sp/" title="Sophomore Portfolio"></iframe>
-    </section>
-      <section class="resource-card">
-      <h2>Featured Projects</h2>
-      <p>Each project includes an embed and a reflection from your Curator Guide.</p>
-    </section>
-
-    <!-- PROJECT 1 -->
-    <section class="resource-card">
-      <div class="project">
-        <iframe src="https://py3.codeskulptor.org/#user310_HPzixx1p4N_1.py" title="Project 1"></iframe>
-
-        <div class="reflection">
-          <h3>Project Title 1</h3>
-          <p>
-            This project brings the charm of a winter day to life by creating a serene scene with snow falling
-softly from the sky. In the center stands a carefully crafted snowman, complete with a cozy hat
-perched on its head and a bright carrot nose that adds a touch of warmth to the cold setting.
-The falling snowflakes drift gently around the snowman, evoking the peaceful quiet of a
-December afternoon. The scene captures the essence of winter, celebrating the simple joys of
-the season, and evokes a nostalgic sense of wonder and holiday spirit. It’s a perfect
-representation of a crisp, chilly day, where nature’s beauty and the fun of building a snowman
-come together in a heartwarming display..
-          </p>
-          <p><strong>Skills:</strong> Animation , for loops , Shapes , Conditional statements </p>
-        </div>
+    <article class="project" data-category="python">
+      <span class="tag">PYTHON · ANIMATION</span>
+      <h3>Winter Scene</h3>
+      <p>A winter illustration featuring a snowman and falling snow. This project explores how code can create motion and bring a seasonal scene to life.</p>
+      <p><strong>Skills:</strong> Shapes, loops, animation, conditional statements.</p>
+      <div class="actions">
+        <a class="btn primary" href="https://py3.codeskulptor.org/#user310_HPzixx1p4N_1.py" target="_blank" rel="noopener">View Project ↗</a>
       </div>
-    </section>
+    </article>
 
-    <!-- PROJECT 2 -->
-    <section class="resource-card">
-      <div class="project">
-        <iframe src = "https://py3.codeskulptor.org/#user310_ssR1wwO709_0.py" title="Project 2"></iframe>
-
-        <div class="reflection">
-          <h3>Project Title 2</h3>
-          <p>
-            I created a Rock Paper Scissors game in Python using CodeSkulptor, where the computer randomly selects rock, paper, or scissors and the user inputs their choice to play against it. I used conditional statements to compare the player’s choice with the computer’s and determine the winner based on the game’s rules (rock beats scissors, scissors beat paper, paper beats rock). This project helped me practice using randomization, user input  to build an interactive program.
-          </p>
-          <p><strong>Skills:</strong> user input/output,Python programming, using def functions, Conditional statements (if,elif,else),Loops (while loop </p>
-        </div>
+    <article class="project" data-category="python">
+      <span class="tag">PYTHON · INTERACTIVE GAME</span>
+      <h3>Rock Paper Scissors</h3>
+      <p>An interactive game where the player competes against a computer making a random choice. Conditional statements determine the winner.</p>
+      <p><strong>Skills:</strong> User input, randomization, functions, loops, if/elif/else.</p>
+      <div class="actions">
+        <a class="btn primary" href="https://py3.codeskulptor.org/#user310_ssR1wwO709_0.py" target="_blank" rel="noopener">View Project ↗</a>
       </div>
-    </section>
-    
-    <!-- PROJECT 3 -->
-    <section class="resource-card">
-      <div class="project">
-        <iframe src="https://py3.codeskulptor.org/#user310_8nuzVAXPKz_0.py" title="Project 3"></iframe>
+    </article>
 
-        <div class="reflection">
-          <h3>Project Title 3</h3>
-          <p>
-            This project helped me practice using Python to take user input and perform different mathematical operations. I learned how operators like addition, subtraction, division, multiplication, modulus, and integer division work in a real program. 
-            It also helped me understand how to display clear output so users can easily read the results.).
-          </p>
-          <p><strong>Skills:</strong> Using variables and data types (integers) , User input with input(),	Mathematical operators,Printing formatted output,	Problem-solving and logical thinking</p>
-        </div>
+    <article class="project" data-category="python">
+      <span class="tag">PYTHON · PROBLEM SOLVING</span>
+      <h3>Python Calculator</h3>
+      <p>A calculator that accepts user input and performs mathematical operations, including addition, subtraction, multiplication, division, and more.</p>
+      <p><strong>Skills:</strong> Variables, data types, input/output, operators, logical thinking.</p>
+      <div class="actions">
+        <a class="btn primary" href="https://py3.codeskulptor.org/#user310_8nuzVAXPKz_0.py" target="_blank" rel="noopener">View Project ↗</a>
       </div>
-    </section>
+    </article>
 
-    <!-- PROJECT 4-->
-    <section class="resource-card">
-      <div class="project">
-        <iframe width="600" height="400" src="https://earsketch.gatech.edu/earsketch2/?sharing=Tq44sRoWuU9QqPqSghYkcg&embedded=true" title="Project 4"></iframe>
-
-        <div class="reflection">
-          <h3>Project Title 4</h3>
-          <p>
-          Using EarSketch, I created a holiday remix by combining different sounds, beats, and loops to give the song a festive feel. 
-          I experimented with functions and beat patterns to add variety and structure to the music. This project helped me see how coding and creativity can work together to make something fun and unique).
-          </p>
-          <p><strong>Skills:</strong> Music sequencing and remixing, Creating and editing beat patterns, Creative problem-solving </p>
-        </div>
+    <article class="project" data-category="creative">
+      <span class="tag">EARSKETCH · MUSIC</span>
+      <h3>Holiday Music Remix</h3>
+      <p>A festive music remix created by combining sounds, beats, and loops. This project connects programming concepts with music and creative experimentation.</p>
+      <p><strong>Skills:</strong> Beat patterns, music sequencing, loops, creative problem-solving.</p>
+      <div class="actions">
+        <a class="btn primary" href="https://earsketch.gatech.edu/earsketch2/?sharing=5QALlUS_Jl7MMLt-MCJ_Fg" target="_blank" rel="noopener">Listen / View ↗</a>
       </div>
-    </section>
+    </article>
 
-  
+    <article class="project" data-category="creative">
+      <span class="tag">APP DESIGN · UX/UI</span>
+      <h3>PingPal Reminder App</h3>
+      <p>A reminder app concept designed to help users keep track of tasks and important reminders. The project explores how a clear interface can make everyday organization easier.</p>
+      <p><strong>Focus:</strong> User experience, interface design, organization, usability.</p>
+      <div class="actions">
+        <a class="btn" href="https://github.com/sammysosa-web/finalunitportfilio" target="_blank" rel="noopener">View Portfolio Repository ↗</a>
+      </div>
+    </article>
 
-  </main>
+    <article class="project" data-category="portfolio">
+      <span class="tag">WEB DEVELOPMENT</span>
+      <h3>Previous Portfolio</h3>
+      <p>My earlier portfolio documents my growth as a student creator and includes previous projects, experiments, and reflections.</p>
+      <p><strong>Skills:</strong> HTML, CSS, portfolio organization, presenting digital work.</p>
+      <div class="actions">
+        <a class="btn primary" href="https://sammysosa-web.github.io/portfolio_sp/#game-design" target="_blank" rel="noopener">View Portfolio ↗</a>
+      </div>
+    </article>
 
-  <!-- FOOTER -->
-  <footer class="resource-card">
-    <p>© <span id="year"></span> SAMANTHA PAYERO  | Junior Fall Portfolio</p>
-  </footer>
+    <article class="project" data-category="creative">
+      <span class="tag">PROJECT DOCUMENTATION</span>
+      <h3>Project Resource</h3>
+      <p>A supporting project file for reviewing my work and documenting the creative and technical process behind my assignments.</p>
+      <div class="actions">
+        <a class="btn primary" href="https://drive.google.com/file/d/1m8aU733OVRk-DLZ1wgMKnHky9sD0WzfU/view" target="_blank" rel="noopener">Open Resource ↗</a>
+      </div>
+    </article>
 
-  <script>
-    // Auto-updates the year in the footer
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+    <article class="project" data-category="portfolio">
+      <span class="tag">WEB DEVELOPMENT</span>
+      <h3>Junior Game Design Portfolio</h3>
+      <p>A collection of game design and programming work that reflects my learning process and development as a student creator.</p>
+      <p><strong>Focus:</strong> Projects, reflection, design, and growth.</p>
+      <div class="actions">
+        <a class="btn primary" href="https://sammysosa-web.github.io/Sp_-juniorportfolio/" target="_blank" rel="noopener">View Portfolio ↗</a>
+      </div>
+    </article>
 
+  </div>
+</section>
+
+<section class="content wrap" id="skills">
+  <div class="section-heading">
+    <h2>Skills & Tools<span class="gradient">.</span></h2>
+    <p>Technical and creative skills I am developing through projects and coursework.</p>
+  </div>
+  <div class="panel">
+    <div class="skills">
+      <span>Python</span><span>HTML</span><span>CSS</span>
+      <span>JavaScript</span><span>Unity</span><span>C#</span>
+      <span>Visual Studio</span><span>GitHub</span>
+      <span>Game Design</span><span>UX/UI Design</span>
+      <span>Problem Solving</span><span>Creative Coding</span>
+      <span>Music Sequencing</span><span>Testing & Debugging</span>
+    </div>
+  </div>
+</section>
+
+<section class="content wrap" id="journey">
+  <div class="section-heading">
+    <h2>My Learning Journey<span class="gradient">.</span></h2>
+    <p>Every project is an opportunity to improve.</p>
+  </div>
+  <div class="about-grid">
+    <div class="panel">
+      <h3>Learning Through Challenges</h3>
+      <p class="muted">When a program or design does not work as expected, I practice reviewing my code, testing changes, and trying new approaches. These experiences help me become more independent and persistent.</p>
+    </div>
+    <div class="panel">
+      <h3>What's Next?</h3>
+      <p class="muted">I want to continue expanding my portfolio, improve my app and game design skills, and create more projects that combine technology, creativity, and useful user experiences.</p>
+    </div>
+  </div>
+</section>
+
+<section class="content wrap" id="contact">
+  <div class="panel">
+    <div class="section-heading">
+      <h2>Let's Connect<span class="gradient">.</span></h2>
+      <p>Thank you for exploring my work. Reach out to learn more about my projects and learning journey.</p>
+    </div>
+    <div class="actions">
+      <a class="btn primary" href="mailto:samanthap260@nycstudents.net">Email Me ↗</a>
+      <a class="btn" href="https://www.linkedin.com/in/samantha-payero-a2a967369" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="btn" href="https://github.com/sammysosa-web" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="year"></span> Samantha Payero</span>
+    <a href="#home">Back to top ↑</a>
+    <span>Designed with creativity and curiosity.</span>
+  </div>
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+
+const filters = document.querySelectorAll(".filter");
+const projects = document.querySelectorAll(".project");
+
+filters.forEach(button => {
+  button.addEventListener("click", () => {
+    const category = button.dataset.filter;
+
+    filters.forEach(item => item.classList.remove("active"));
+    button.classList.add("active");
+
+    projects.forEach(project => {
+      project.hidden =
+        category !== "all" && project.dataset.category !== category;
+    });
+  });
+});
+</script>
 </body>
 </html>

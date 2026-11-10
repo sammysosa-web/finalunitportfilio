@@ -267,81 +267,71 @@ footer {
     margin: 8px 0;
 }
 
-/* =========================
-   RESUME SECTION
-========================= */
-
-.resume-section {
-    max-width: 1000px;
-    margin: 2em auto;
-    padding: 2em 1em;
+.skills-section {
+    padding: 60px 8%;
     text-align: center;
+    color: white;
 }
 
-.resume-preview {
-    margin: 25px auto;
-    max-width: 800px;
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
+.skills-section h2 {
+    font-size: 32px;
+    margin-bottom: 12px;
 }
 
-.resume-preview iframe {
-    width: 100%;
-    height: 600px;
-    border: none;
+.skills-intro {
+    font-size: 16px;
+    margin-bottom: 35px;
+    color: #cccccc;
 }
 
-.resume-buttons {
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+    max-width: 950px;
+    margin: auto;
+}
+
+.skill-category {
+    background: #171727;
+    border: 1px solid #b45cff;
+    border-radius: 15px;
+    padding: 25px;
+    text-align: left;
+}
+
+.skill-category h3 {
+    color: #d49aff;
+    margin-bottom: 18px;
+    font-size: 20px;
+}
+
+.skill-list {
     display: flex;
-    justify-content: center;
-    gap: 15px;
     flex-wrap: wrap;
+    gap: 12px;
 }
 
-.resume-btn {
+.skill-list a {
     display: inline-block;
-    padding: 12px 25px;
-    border: 2px solid #a6d8ff;
-    border-radius: 25px;
-    color: #a6d8ff;
+    padding: 10px 16px;
+    background: #29243a;
+    color: white;
+    border: 1px solid #a65cff;
+    border-radius: 8px;
     text-decoration: none;
-    font-weight: bold;
+    font-size: 14px;
     transition: 0.3s ease;
 }
 
-.resume-btn:hover {
-    background: #a6d8ff;
-    color: #222;
+.skill-list a:hover {
+    background: #a65cff;
+    color: white;
+    transform: translateY(-3px);
 }
-
-/* =========================
-   NAVIGATION LINKS
-========================= */
-
-.navbar-right a {
-    transition: 0.3s ease;
-}
-
-.navbar-right a:hover {
-    color: #a6d8ff;
-}
-
-/* =========================
-   MOBILE RESPONSIVENESS
-========================= */
 
 @media (max-width: 650px) {
     .skills-container {
         grid-template-columns: 1fr;
-    }
-
-    .resume-preview iframe {
-        height: 450px;
-    }
-
-    .resume-buttons {
-        flex-direction: column;
-        align-items: center;
     }
 }

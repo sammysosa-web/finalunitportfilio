@@ -215,3 +215,133 @@ footer {
   padding: 8px 12px;
   cursor: pointer;
 }
+/* =========================
+   SKILLS SECTION
+========================= */
+
+.skills-section {
+    max-width: 1200px;
+    margin: 2em auto;
+    padding: 2em 1em;
+    text-align: center;
+}
+
+.skills-section h2,
+.resume-section h2 {
+    color: #a6d8ff;
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.skills-section > p,
+.resume-section > p {
+    margin-bottom: 30px;
+}
+
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.skill-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid #a6d8ff;
+    border-radius: 15px;
+    padding: 25px;
+    text-align: left;
+    transition: 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    background: rgba(166, 216, 255, 0.12);
+}
+
+.skill-card h3 {
+    color: #a6d8ff;
+    margin-bottom: 15px;
+}
+
+.skill-card p {
+    margin: 8px 0;
+}
+
+/* =========================
+   RESUME SECTION
+========================= */
+
+.resume-section {
+    max-width: 1000px;
+    margin: 2em auto;
+    padding: 2em 1em;
+    text-align: center;
+}
+
+.resume-preview {
+    margin: 25px auto;
+    max-width: 800px;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.resume-preview iframe {
+    width: 100%;
+    height: 600px;
+    border: none;
+}
+
+.resume-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.resume-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border: 2px solid #a6d8ff;
+    border-radius: 25px;
+    color: #a6d8ff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.resume-btn:hover {
+    background: #a6d8ff;
+    color: #222;
+}
+
+/* =========================
+   NAVIGATION LINKS
+========================= */
+
+.navbar-right a {
+    transition: 0.3s ease;
+}
+
+.navbar-right a:hover {
+    color: #a6d8ff;
+}
+
+/* =========================
+   MOBILE RESPONSIVENESS
+========================= */
+
+@media (max-width: 650px) {
+    .skills-container {
+        grid-template-columns: 1fr;
+    }
+
+    .resume-preview iframe {
+        height: 450px;
+    }
+
+    .resume-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+}
